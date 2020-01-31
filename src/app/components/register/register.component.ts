@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     alert(JSON.stringify(this.registrationForm.value));
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
