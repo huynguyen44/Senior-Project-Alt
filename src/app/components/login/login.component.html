@@ -8,23 +8,27 @@
     <form class="example-form">
       <mat-card-content>
         <mat-form-field class="example-full-width">
-          <label for="username"></label>
-          <input id="username"
-                 matInput
-                 placeholder="Username"
-                 type="text"/>
+          <input matInput placeholder="Username" [formControl]="usernameFormControl" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="usernameFormControl.hasError('username') && !usernameFormControl.hasError('required')">
+            Please enter a valid username
+          </mat-error>
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Username is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <label for="userPassword"></label>
-          <input id="userPassword"
-                 matInput
-                 placeholder="Password"
-                 type="password"/>
-          <i [showHideStatus]="{materialIcon: true, id: 'userPassword'}"
+          <input matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" id="userPassword" type="password" showHideInput>
+          <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+            Please enter a valid password
+          </mat-error>
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <i matSuffix
              class="material-icons"
-             matSuffix
              showHideTrigger="userPassword"
+             [showHideStatus]="{materialIcon: true, id: 'userPassword'}"
           ></i>
         </mat-form-field>
       </mat-card-content>
