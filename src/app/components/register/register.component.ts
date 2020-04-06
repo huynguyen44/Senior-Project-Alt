@@ -8,7 +8,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   isSubmitted = false;
-  Roles: any = ['Parent', 'Student'];
+  Roles: any = ['Parent', 'Student', 'Fucker'];
   registrationForm = this.fb.group({
     roleName: [''],
     saintName: [''],
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   get roleName() {
-    return this.registrationForm.get('roleName');
+    return this.registrationForm.get('roles');
   }
 
   onSubmit() {

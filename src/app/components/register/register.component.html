@@ -5,12 +5,11 @@
     </mat-card-header>
 
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="example-form">
-
       <mat-card-content>
-        <mat-form-field class="example-full-width"  formControlName="roleName">
+        <mat-form-field class="example-full-width">
           <mat-label>Choose a role...</mat-label>
           <mat-select required>
-            <mat-option value="" [value]="roles" *ngFor="let roles of Roles">{{roles}}</mat-option>
+            <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}} </mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -34,7 +33,7 @@
           <input matInput required placeholder="Email" formControlName="email">
         </mat-form-field>
 
-            <form>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
               <mat-form-field class="example-full-width">
                 <input matInput required placeholder="Address" formControlName="address">
               </mat-form-field>
@@ -47,11 +46,8 @@
                 <input matInput required placeholder="Zip Code" formControlName="zipCode">
               </mat-form-field>
             </form>
-
       </mat-card-content>
-
-      <button mat-stroked-button color="accent" class="btn-block">Register</button>
-
+        <button mat-stroked-button color="accent" class="btn-block">Register</button>
     </form>
   </mat-card>
 </div>
