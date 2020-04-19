@@ -14,6 +14,7 @@ import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {AboutComponent} from './components/about/about.component';
+import {fakeBackendProvider} from './helpers';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import {AboutComponent} from './components/about/about.component';
     MatCardModule,
     ShowHidePasswordModule
   ],
-  providers: [],
+  providers: [
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
