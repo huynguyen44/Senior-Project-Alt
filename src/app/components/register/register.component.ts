@@ -14,7 +14,23 @@ export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
   loading = false;
   submitted = false;
-  Roles: string[] = ['Parent', 'Student', 'Teacher', 'Teacher Assistant'];
+  selectedValue: string;
+  saintName: string;
+  lastName: string;
+  middleName: string;
+  firstName: string;
+  email: string;
+  address: string;
+  city: string;
+  zipCode: bigint;
+
+
+  Roles = [
+    {id : '1', roleName: 'Parent'},
+    {id : '2', roleName: 'Student'},
+    {id : '3', roleName: 'Teacher'},
+    {id : '4', roleName: 'Teacher Assistant'},
+  ];
   States: string[] = ['AL: Alabama', 'AK: Alaska', 'AZ: Arizona', 'AR: Arkansas', 'CA: California',
     'CO: Colorado', 'CT: Connecticut', 'DE: Delaware', 'DC: District Of Columbia',
     'FL: Florida', 'GA: Georgia', 'HI: Hawaii', 'ID: Idaho', 'IL: Illinois', 'IN: Indiana',
@@ -35,15 +51,19 @@ export class RegisterComponent implements OnInit {
     Validators.pattern('valid'),
   ]);
 
-  constructor(public fb: FormBuilder) {
+  constructor() {
   }
 
-  get roleName() {
+  /*get roleName() {
     return this.registrationForm.get('roles');
-  }
+  }*/
 
-  onSubmit() {
-    alert(JSON.stringify(this.registrationForm.value));
+  onSubmit(data) {
+    // tslint:disable-next-line:max-line-length
+    const allInfo = `My name is ${this.saintName} ${this.lastName} ${this.middleName} ${this.firstName}.\n
+    My address is ${this.address}, ${this.city} ${this.zipCode}.\n
+    My email is ${this.email}`;
+    alert(allInfo);
   }
 
   ngOnInit() {

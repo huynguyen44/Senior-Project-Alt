@@ -22,8 +22,6 @@ import {first} from 'rxjs/operators';
 })
 
 export class LoginComponent implements OnInit {
-  username = 'hnguyen7';
-  password = 'CS4375';
   loginForm: FormGroup;
   loading = false;
   submitted = false;

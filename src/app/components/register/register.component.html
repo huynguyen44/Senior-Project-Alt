@@ -4,42 +4,44 @@
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="example-form">
+    <form (ngSubmit)="onSubmit()" class="example-form">
       <mat-card-content>
         <mat-form-field class="example-full-width">
           <mat-label>Choose a role...</mat-label>
-          <mat-select required>
-            <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}} </mat-option>
+          <mat-select required (change)="Roles">
+            <mat-option *ngFor="let role of Roles; let i = index" [value]="i">
+              {{role.roleName}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput required placeholder="Saint Name" formControlName="saintName">
+          <input matInput required placeholder="Saint Name" name="saintName" [(ngModel)]="saintName">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput required placeholder="Last Name" formControlName="lastName">
+          <input matInput required placeholder="Last Name" name="lastName" [(ngModel)]="lastName">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Middle Name" formControlName="middleName">
+          <input matInput placeholder="Middle Name" name="middleName" [(ngModel)]="middleName">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput required placeholder="First Name" formControlName="firstName">
+          <input matInput required placeholder="First Name" name="firstName" [(ngModel)]="firstName">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput required placeholder="Email" formControlName="email">
+          <input matInput required placeholder="Email" name="email" [(ngModel)]="email">
         </mat-form-field>
 
-        <form [formGroup]="registrationForm">
+        <form>
             <mat-form-field class="example-full-width">
-              <input matInput required placeholder="Address" formControlName="address">
+              <input matInput required placeholder="Address" name="address" [(ngModel)]="address">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <input matInput required placeholder="City" formControlName="city">
+              <input matInput required placeholder="City" name="city" [(ngModel)]="city">
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
@@ -50,7 +52,7 @@
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <input matInput required placeholder="Zip Code" formControlName="zipCode">
+              <input matInput required placeholder="Zip Code" name="zipCode" [(ngModel)]="zipCode">
             </mat-form-field>
         </form>
 
@@ -64,8 +66,8 @@
       </form>
 
       </mat-card-content>
-        <button [disabled]="loading" mat-stroked-button color="accent" class="btn-block">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        <button mat-stroked-button color="accent" class="btn-block">
+          <span class="spinner-border spinner-border-sm mr-1"></span>
           Register
         </button>
     </form>
